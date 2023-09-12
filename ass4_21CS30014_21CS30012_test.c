@@ -1,94 +1,91 @@
-/*
-*   // Nisarg Upadhyaya - 19cs30031
-*   // Animesh Jha - 19cs10070
-*/
+/* Test File */
 
-inline void foo1(int *restrict p1, const int p2, volatile int p3, ...) {
-    auto int a;
-    register int b;
-    extern int c;
-    static int d = 4;
+extern int value;
+static const double pi = 3.14;
+auto b = 5;
+volatile long y = 10;
+_Bool x = 1;
+enum week { Mon = 1, Tue, Wed, Thur, Fri, Sat, Sun };
+
+inline char toUpper(char ch)
+{
+    if(ch >= 'a' && ch <= 'z')
+        ch -= 32;
+    return ch;
 }
 
-const char *foo2(int b[const static 8], int c[static 9], int d[], int e[const *]);
+int main()
+{
+    // testing identifiers and constants
+    short signed int number0 = 40;  // integer-constant
+    enum week _day = Sun;           // enum- constant
+    float f1_ = 23.56;              // floating-constant
+    float f2_ = 23.E-2;
+    float f3_ = 23.56e+3;
+    float f4_ = .56E2;
+    float f5_ = 232e3;
+    char _1 = '$';                  // character-constant
+    char _2 = '\b';
 
-enum e1;
-enum e2 { TAG1, TAG2 };
-enum { TAG3 = 0, TAG4 } e3;
+    // testing string literals
+    char s[2] = "";
+    char str[] = "This is a test string\\\"\'\n";
 
-signed main() {
-    int a[6] = { 1, 2, [2]=3 };
-    char b[] = "Test string :)";
-    char c1 = 'c';
-    char *c2 = &c1;
-    *c2 = 'a';
-    char **d = (char) { "a", b, "abc" };
+    // testing punctuators
+    int a = 1, b = 1;
+    a++;
+    a--;
+    a = a&b;
+    a = a*b;
+    a = a+b;
+    a = a-b;
+    a = !b;
+    a = ~b;
+    a = a/b;
+    a = a%b;
+    a = a<<b;
+    a = a>>b;
+    a = a^b;
+    a = a|b;
+    a = (a) ? a : b;
+    a *= b;
+    a /= b;
+    a %= b;
+    a += b;
+    a -= b;
+    a <<= b;
+    a >>= b;
+    a &= b;
+    a ^= b;
+    a |= b, b = 0;
 
-    unsigned long n1 = +123456789;
-    short n2 = ~16;
-    float n3 = -3.53;
-    double n4 = 2.99e-2;
-    _Bool n5 = !1;
-    double _Complex n6;
-    double _Imaginary n7;
-
-    n1 = (int) c;
-    n1 = sizeof(int);
-    n1 = sizeof n1;
-
-    n1 *= n1, n1 /= n1, n1 %= n1;
-    n1 += (n1 -= n1);
-    n1 <<= (n1 >>= n1);
-    n1 &= n1 |= n1 ^= n1;
-
-    n1 = ( (n1==0 || n1==1) && n1!=n2 ) ? n1 = 0 : n2;
-    a[n2] = n1;
-
-    RANDOM_LOC:
-        if (n3 < n4) {
-
-            switch (n2) {
-                case 0:
-                    n2++;
-                    break;
-                default:
-                    n2--;
-            }
-
-        } else if (n3 > n4) {
-            if(n2 >= n1)
-                n1++;
-        } else {
-            if(n2 <= n1)
-                n2++;
-        }
-    
-    while(n2--)
-        goto RANDOM_LOC;
-
-    for(;;)
-    for(int i;;)
-    for(int i=0, j=1; i!=j; i++) {
-        if(j==1)
-            continue;
+    switch (_day) {
+        case 1:
+            break;
+        default:;
     }
 
+    int n = 10, t = 20;
     do {
-        n2++;
-    } while(n2 < 0);
+        n -= 1;
+    } while (n > 1);
 
-    int t1, t2, t3, t4, t5, t6;
+    for(int i = 0; (i < 3 && i >= 0) || (i > 100 && i != 101); i++) {
+        continue;
+    }
+ 
+    if (t <= 30) {
+        t = 31;
+    } else {
+        t = 30;
+    }
 
-    t1 = t1 + t2 - t3 / t4 * t5 % t6;
-    t2 = t2<<2;
-    t2 = t2>>2;
-    t1 = t2 & t3 | t4 ^ t5;
+    // Testing comments
 
-    foo1(1,2,3,4,5,6);
+    // This is a single line comment
 
-    /* . and -> test */
-    ms1.a = 3;
-    ms2->a = 4;
+    /* This comment is a multi-line comment. 
+     * Second line of the multi line comment */
 
     return 0;
 }

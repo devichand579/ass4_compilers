@@ -136,13 +136,13 @@ NEWLINE                  \n
 
 "//"                            { BEGIN(SINGLE_LINE_COMMENT); return SINGLE_LINE_COMMENT_START; }
 <SINGLE_LINE_COMMENT>.          {}
-<SINGLE_LINE_COMMENT>\n         { BEGIN(INITIAL); return SINGLE_LINE_COMMENT_END; }
+<SINGLE_LINE_COMMENT>\n         { BEGIN(INITIAL);count++;printf("\n.....parsing line No.%d.....\n",count) ;return SINGLE_LINE_COMMENT_END; }
 <SINGLE_LINE_COMMENT><<EOF>>    { BEGIN(INITIAL); return SINGLE_LINE_COMMENT_END; }
 
 "/*"                            { BEGIN(MULTI_LINE_COMMENT); return MULTI_LINE_COMMENT_START; }
 <MULTI_LINE_COMMENT>"*/"        { BEGIN(INITIAL); return MULTI_LINE_COMMENT_END; }
 <MULTI_LINE_COMMENT>.           {}
-<MULTI_LINE_COMMENT>\n          {}
+<MULTI_LINE_COMMENT>\n          {count++, prinf("\n......Parsing Line No.%d.........\n",count);}
 
 {NEWLINE}                       { Count++; printf("\n Parsing Line No. %d \n",Count); }
 
